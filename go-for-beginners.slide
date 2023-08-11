@@ -1,0 +1,396 @@
+## Slide 0
+Escala Tech Climb
+Golang for software engeniers
+11 Aug 2023
+
+Rodinei Lima
+@rodineii
+
+## Slide 1
+* Escala Tech Climb
+Explorando o Poder do Golang
+Impulsionando a Eficiência e Inovação em nossa Empresa
+.image escala.png 300 _
+
+## Slide 2
+* Por que Go?
+.image img_2.png 150 _
+- Simplicidade em Foco
+- Linguagem e Biblioteca Consistentes
+- Tempos de Compilação Rápidos
+- Ferramentas Integradas Excelentes ("go get", "go fmt", "go vet", "go test")
+- Leve e Suficientemente Rápido
+- Implantação Fácil e Compilação Cruzada (cross compilation)
+
+## Slide 3
+* Go principais valores
+- Simplicidade
+- Fácil de Aprender
+- Foco em Soluções Idiomáticas (legibilidade e manutenibilidade do código)
+- Resolução de Problemas de Engenharia de Software (Desempenho e Eficiência, Concorrência e Paralelismo, Simplicidade e Legibilidade, Gerenciamento de Memória, Segurança, Facilidade de Implantação e Facilidade de Aprendizado)
+.image gohorse.png 200 _
+
+## Slide 4
+* Empresas que usam Go
+.image empresasusamgolang.png 250 _
+
+## Slide 5
+* Softwares populares criados em Go
+- Docker 
+- Kubernetes
+- etcd
+- Terraform
+- Minio
+- Hugo
+.image img_3.png 250 _
+
+* A Linguagem
+
+* Hello world
+
+.play -edit go-for-beginners/hello_world.go
+.image gophersuprise.gif 300 _
+
+* Packages
+
+* Package declaration
+
+`hello_world.go`
+
+.play -edit go-for-beginners/hello_world.go
+
+- Cada arquivo declara seu pacote
+- O pacote `main` é usado para código executável
+
+* Pastas são pacotes
+
+- Todos os arquivos em uma pasta estão no mesmo pacote
+
+`strings/reverse.go`
+
+.code go-for-beginners/strings/reverse.go HLpkg
+
+`strings/upper.go`
+
+.code go-for-beginners/strings/upper.go HLpkg
+
+* Usando pacotes
+
+`hello_world.go`
+
+.play -edit go-for-beginners/hello_world.go
+
+- Importa pacote de biblioteca padrão *fmt*
+- Todas as importações são explícitas
+
+* Usando pacotes externos
+
+.code go-for-beginners/faker.go
+
+- execute o *go* *mod* *init* para criar o go.mod que controla as versões dos pacotes
+- execute o *go* *get* *github.com/bxcodec/faker* para buscar o pacote
+- execute o *go* *mod* *tidy* para garantir que o arquivo go.mod reflita precisamente as dependências usadas pelo seu código
+
+* Visibilidade do código
+
+.code go-for-beginners/exports.go /START INTERNAL/,/END INTERNAL/
+
+- Todas as variáveis, funções e tipos em minúsculas são internas
+
+.code go-for-beginners/exports.go /START EXPORTED/,/END EXPORTED/
+
+- Todas as variáveis, funções e tipos em maiúsculas são exportadas
+
+* Funções
+
+* Declarações de função
+
+.code go-for-beginners/hello_world.go /START/,/END/
+
+.code go-for-beginners/funcs/fib.go /^func fib/,/^}/
+
+.image gophernotebook.png 250 _
+
+* Multiplos argumentos de retorno
+
+.code go-for-beginners/funcs/multiple.go /^func do/,/^}/
+
+- Padrão muito comum para retornar erros opcionais
+
+* Funções integradas
+
+Felizmente apenas algumas!
+
+append()
+cap()
+close()
+copy()
+delete()
+len()
+make()
+new()
+panic()
+recover()
+
+- um pouco mais para números complexos
+
+* Defer
+
+.play go-for-beginners/defer_file.go /START/,/END/ HLdefer
+
+- a declaração *defer* é usada para agendar a execução de uma função até o final do escopo da função atual, independentemente de como a função é encerrada (normalmente ou devido a um pânico).
+
+* Defer
+
+.play go-for-beginners/defer_stack.go /START/,/END/
+
+- as chamadas *defer* podem ser empilhadas
+- será executado em último na primeira ordem
+
+* Types
+
+* Simples
+
+*Numbers*
+
+.code go-for-beginners/types/simple.go /START NUM/,/END NUM/
+
+*Booleans*
+
+.code go-for-beginners/types/simple.go /START BOOL/,/END BOOL/
+
+*Strings*
+
+.code go-for-beginners/types/simple.go /START STRING/,/END STRING/
+
+Tudo é UTF-8, sim!
+
+* Arrays and Slices
+
+*Arrays*
+
+.code go-for-beginners/types/arrays.go /START ARRAY/,/END ARRAY/
+
+- comprimento fixo
+
+*Slices*
+
+.code go-for-beginners/types/arrays.go /START SLICE/,/END SLICE/
+
+*Slice*expressions*
+
+.play go-for-beginners/types/arrays.go /START SLICE EXPR/,/END SLICE EXPR/
+
+* Maps
+
+.play go-for-beginners/types/maps.go /START/,/END/
+
+- Os mapas devem ser inicializados com *make*!
+.image gophermaps.png 300 _
+
+* Maps
+
+.play go-for-beginners/types/maps_access.go /START/,/END/
+
+* Structs
+
+* Estrutura literal
+
+.play go-for-beginners/types/structs.go /START LIT/,/END LIT/
+
+.image gopher_rocks.png 300 _
+
+* Tipos de estrutura personalizados
+
+.code go-for-beginners/types/structs.go /START TYPE/,/END TYPE/
+
+* Struct methods
+
+.code go-for-beginners/types/struct_methods.go /START/,/END/
+
+- *func* declaração com receptor adicional
+
+* Ponteiros
+
+.play go-for-beginners/types/pointers.go /START/,/END/
+
+O que isso imprime?
+
+* Ponteiros
+
+.play go-for-beginners/types/pointers_struct.go /START/,/END/
+
+O que isso imprime?
+
+* Tipos personalizados
+
+.play go-for-beginners/types/custom_types.go /START/,/END/
+
+- Adicione métodos para qualquer tipo!
+- Ótimo para objetos de valor e modelagem
+
+* Funções
+
+.play go-for-beginners/types/functions.go /START/,/END/
+
+- Funções podem ser passadas como argumentos para outras funções e podem ser definidas dentro de funções
+
+* Interfaces
+
+.code go-for-beginners/types/interfaces.go /START INTERFACE/,/END INTERFACE/
+
+- As interfaces geralmente são definidas no pacote usando o *type*
+
+.image gophermagebook.png 300 _
+
+* Interfaces
+
+.play go-for-beginners/types/interfaces.go /START IMPL/,/END IMPL/
+
+- Os tipos implementam implicitamente uma interface
+
+* Interfaces
+
+*Vantagens*
+
+- Código Mais Legível e Expressivo
+- Muitos problemas genéricos/polimorfismo podem ser resolvidos com interfaces
+
+*Interfaces Populares*
+
+.code go-for-beginners/types/popular.go /START io.Reader/,/END io.Reader/
+.code go-for-beginners/types/popular.go /START io.Writer/,/END io.Writer/
+
+* Interfaces
+
+*Popular*interfaces*
+
+.code go-for-beginners/types/popular.go /START sort.Interface/,/END sort.Interface/
+
+* Concorrência
+.image gophermuscle.jpg 400 _
+
+* Go routines
+
+.play go-for-beginners/concurrency/goroutines.go /START/,/END/
+
+- Fácil de fazer algo simultaneamente
+- O agendador Go lida com milhares de goroutines
+
+* Coordenação
+
+.play go-for-beginners/concurrency/coordination.go /START/,/END/
+
+* Channels
+
+.play go-for-beginners/concurrency/channels.go /START/,/END/
+
+- Enviar e receber blocos
+- Compartilhe dados comunicando-se
+
+* Um servidor web simples
+
+.play go-for-beginners/http/webserver.go
+
+- A biblioteca padrão tem ótimo suporte HTTP
+
+* Um cliente web simples
+
+.play go-for-beginners/http/webclient.go
+
+* Ferramentas
+
+* Build
+
+*Cria*um*arquivo*único*
+
+`go`build`cmd.go`-o`prog_name`
+
+*Construir*pacote*
+
+`go`build`./cli/ctl`
+
+*Cross*compile*
+
+`GOOS=linux`go`build`.`
+
+* Go fmt
+
+`go`fmt`.`
+
+Existe um padrão oficial para formatar o código Go!
+
+- Editores / IDEs geralmente têm suporte para fazer isso ao salvar
+
+
+.image gofmt.png 305 _
+
+* Testes
+
+.code go-for-beginners/testing.go /START/,/END/
+
+`go`test`testing.go`
+
+* Módulos
+
+Por que?
+
+- Construções reproduzíveis!
+- Gerenciar versões de dependências
+- Esqueça *GOPATH*...
+- Estável desde Go 1.13
+
+* Módulos
+
+`mkdir`new-project`
+`cd`new-project`
+
+`go`mod`init`github.com/me/new-project`
+
+`go`get`github.com/bxcodec/faker`
+
+*go.mod*
+.code go-for-beginners/modules/go.mod
+
+* Recursos
+
+* Aprendendo Go
+
+.link https://tour.golang.org
+
+.link https://gobyexample.com
+
+.link https://gophercises.com/
+
+.link https://golang.org/doc/effective_go.html
+
+.link https://golang.org/ref/spec
+.image gopherdoctor.png 305 _
+
+* Encontrando pacotes
+
+.link https://awesome-go.com
+
+.link https://godoc.org
+
+.link https://go.dev
+.image gopherrickandmorty.png 305 _
+
+* Mantendo-se atualizado
+
+.link https://www.meetup.com/pt-BR/golangbr/
+
+.link https://www.meetup.com/pt-BR/go-belo-horizonte/
+
+.link https://golangweekly.com
+
+.link https://changelog.com/gotime
+
+.link https://www.youtube.com/channel/UCx9QVEApa5BKLw9r8cnOFEA/playlists GopherCon (YouTube)
+.image image_processing20201205-17493-swbwr3.png 305 _
+
+* Editores / IDEs
+
+- Goland da JetBrains
+- VSCode com a extenção *Go* (da Microsoft)
+.image gophers-pack-marialetta.png 400 _
